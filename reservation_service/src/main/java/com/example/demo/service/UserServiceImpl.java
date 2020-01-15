@@ -18,13 +18,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void save(User user) {
+    public User save(User user) {
         this.userRepository.save(user);
+        return user;
     }
 
     @Override
     public void delete(User user) {
         this.userRepository.delete(user);
+    }
+
+    @Override
+    public void update(User user) {
     }
 
     @Override

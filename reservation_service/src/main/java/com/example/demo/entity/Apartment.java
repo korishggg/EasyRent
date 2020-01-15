@@ -3,41 +3,49 @@ package com.example.demo.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
-public class Apartment {
+public class Apartment implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
 
-//    @NotNull
     private String city;
-//    @NotNull
+
     private String country;
-//    @NotNull
+
     private String address;
 
-//    @NotNull
     private Integer price;
 
     private String description;
 
-    private Boolean isBooked;
-
     @ManyToOne
     private User user;
 
+    @ManyToMany
+    private List<Reservation> reservations;
 
+    public Apartment(String city, String country, String address, Integer price, User user) {
+        this.city = city;
+        this.country = country;
+        this.address = address;
+        this.price = price;
+        this.user = user;
+        this.reservations = new ArrayList<>();
+    }
 
-
-    //    private User owner;
-
-
+    public void addReservation(Reservation reservation) {
+        this.reservations.add(reservation);
+    }
+    public void removeReservation(Reservation reservation) {
+        this.reservations.remove(reservation);
+    }
 }

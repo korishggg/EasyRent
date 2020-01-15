@@ -36,4 +36,8 @@ public class ApartmentServiceImpl implements ApartmentService {
     public List<Apartment> findAll() {
         return this.apartmentRepository.findAll();
     }
+
+    @Override
+    public void update(Apartment apartment) {
+    }
 }

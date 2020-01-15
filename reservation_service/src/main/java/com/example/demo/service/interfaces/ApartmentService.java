@@ -10,4 +10,5 @@ public interface ApartmentService {
     public void delete(Apartment apartment);
     public Optional<Apartment> findById(Long id);
     List<Apartment> findAll();
+    void update(Apartment apartment);
 }
